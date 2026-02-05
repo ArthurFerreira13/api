@@ -1,10 +1,8 @@
 package med.voll.api.infra.security;
 
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,6 +26,7 @@ public class SecurityConfigurations {
                         .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                         .authorizeHttpRequests(req -> {
                             req.requestMatchers("/login").permitAll();
+                            req.requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll();
                             req.anyRequest().authenticated();
                         })
                         .build();
