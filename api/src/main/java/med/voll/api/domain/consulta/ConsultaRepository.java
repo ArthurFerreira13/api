@@ -1,12 +1,15 @@
 package med.voll.api.domain.consulta;
 
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
 
 public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
-    Boolean existsByMedicoIdAndData(Long idMedico, LocalDateTime data);
+    boolean existsByMedicoIdAndData(Long idMedico, LocalDateTime data);
 
-    Boolean existsByPacimenteAndDataBetween( Long idPaciente, LocalDateTime primeiroHorario, LocalDateTime ultimoHorario);
 
+    boolean existsByPacienteAndData( Long idPaciente, LocalDateTime primeiroHorario, LocalDateTime ultimoHorario);
+
+    boolean existsByPacienteIdAndDataBetween(Long idPaciente, LocalDateTime primeiroHorario, LocalDateTime ultimoHorario);
 }

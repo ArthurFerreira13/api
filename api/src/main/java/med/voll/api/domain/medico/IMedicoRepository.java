@@ -15,17 +15,16 @@ public interface IMedicoRepository extends JpaRepository <Medico, Long> {
     Page<Medico> findAllByAtivoTrue(Pageable pageable);
 
     @Query("""
-            SELECT m FROM Medico m
-            WHERE
-            m.ativo = true
-            AND
-            m.especialidade = :especialidade
-            AND 
-            m.id not in(SELECT c.medico.id FROM Consulta WHERE c.data = :data )
-            ORDER BY RAND()
-            limite 1
-            
-            """)
+    SELECT m FROM Medico m 
+    WHERE m.ativo = true 
+    AND m.especialidade = :especialidade
+    AND m.id NOT IN (
+        SELECT c.medico.id FROM Consulta c 
+        WHERE c.data = :data
+        AND c.motivoCancelamento IS NULL
+    )
+    ORDER BY function('rand')
+""")
     Medico escolherMedicoAleatorioLivre(Especialidade especialidade, @NotNull @Future LocalDateTime data);
 
     @Query("""
@@ -34,5 +33,5 @@ public interface IMedicoRepository extends JpaRepository <Medico, Long> {
             WHERE
             m.id = :id
             """)
-    Boolean findAtivoById(Long idMedico);
+    Boolean findAtivoById(Long id);
 }
