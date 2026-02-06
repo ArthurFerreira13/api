@@ -31,5 +31,18 @@ A aplicação inclui suítes de testes para validar o comportamento das camadas 
 * `spring-boot-starter-test`
 * `spring-boot-starter-security-test`
 * `spring-boot-starter-data-jpa-test`
+ 
+🚀 Build e Execução
+Para gerar o arquivo executável e rodar a aplicação via terminal:
 
+Gerar o arquivo .jar: Execute o comando Maven para limpar builds anteriores e empacotar a aplicação:
+
+Bash
+
+mvn clean package
+Executar a aplicação: Após a geração do arquivo na pasta target, utilize o comando:
+
+Bash
+
+java -jar target/api-0.0.1-SNAPSHOT.jar
 ---
