@@ -18,7 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class MedicoController {
 
     @Autowired
-    private  IMedicoRepository repository;
+    private MedicoRepository repository;
 
     @PostMapping
     @Transactional

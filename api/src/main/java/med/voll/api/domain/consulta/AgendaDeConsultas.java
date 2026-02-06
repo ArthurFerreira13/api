@@ -4,7 +4,7 @@ import jakarta.validation.Valid;
 import med.voll.api.domain.ValidacaoException;
 import med.voll.api.domain.consulta.validacoes.ValidadorAgendamentoDeConsulta;
 import med.voll.api.domain.medico.Medico;
-import med.voll.api.domain.medico.IMedicoRepository;
+import med.voll.api.domain.medico.MedicoRepository;
 import med.voll.api.domain.paciente.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class AgendaDeConsultas {
     private PacienteRepository pacienteRepository;
 
     @Autowired
-    private IMedicoRepository medicoRepository;
+    private MedicoRepository medicoRepository;
 
     // Spring injeta automaticamente todos os validadores que implementam a interface
     @Autowired

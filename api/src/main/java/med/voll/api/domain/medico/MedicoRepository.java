@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
 
-public interface IMedicoRepository extends JpaRepository <Medico, Long> {
+public interface MedicoRepository extends JpaRepository <Medico, Long> {
 
 
     Page<Medico> findAllByAtivoTrue(Pageable pageable);
@@ -24,6 +24,7 @@ public interface IMedicoRepository extends JpaRepository <Medico, Long> {
         AND c.motivoCancelamento IS NULL
     )
     ORDER BY function('rand')
+    LIMIT 1
 """)
     Medico escolherMedicoAleatorioLivre(Especialidade especialidade, @NotNull @Future LocalDateTime data);
 
